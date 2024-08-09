@@ -13,7 +13,8 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.henrikcatch.CatchCue"
+      "bundleIdentifier": "com.henrikcatch.CatchCue",
+      "buildNumber": "5"
     },
     "android": {
       "adaptiveIcon": {
