@@ -108,7 +108,7 @@ export const DataProvider = ({ children }) => {
             fetchMatches();
             fetchLeaderboard();
 
-            console.log("Response: ", response.data);
+            return response.data.data;
         } catch (error) {
             console.log("Error: ", error);
         }
@@ -127,7 +127,7 @@ export const DataProvider = ({ children }) => {
     }
 
     return (
-        <DataContext.Provider value={{ getFirstLetter, handleMatchSave, fetchPlayers, fetchMatches, rank, totalPlayers, points, leaderboard, matches }}>
+        <DataContext.Provider value={{ getFirstLetter, handleMatchSave, fetchPlayers, fetchMatches, fetchLeaderboard, rank, totalPlayers, points, leaderboard, matches }}>
             {children}
         </DataContext.Provider>
     );

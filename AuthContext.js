@@ -8,6 +8,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [authState, setAuthState] = useState({ isAuthenticated: false, token: null });
     const [identity, setIdentity] = useState(null);
+    const [isSignedIn, setIsSignedIn] = useState(false);
     const navigation = useNavigation();
 
     const apiUrl = 'https://biljard.catchmedia.no/api';
@@ -28,7 +29,6 @@ export const AuthProvider = ({ children }) => {
 
                     if (response.data.status === 200) {
                         setAuthState({ isAuthenticated: true, token });
-                        navigation.navigate('Tabs');
                         fetchIdentity(token);
                     } else {
                         setAuthState({ isAuthenticated: false, token: null });
@@ -59,7 +59,6 @@ export const AuthProvider = ({ children }) => {
                 await AsyncStorage.setItem('authToken', token);
                 setAuthState({ isAuthenticated: true, token });
                 fetchIdentity(token);
-                navigation.navigate('Tabs');
             }
         } catch (error) {
             console.warn('Sign in failed', error);

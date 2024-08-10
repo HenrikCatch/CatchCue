@@ -35,7 +35,7 @@ const getFirstLetter = (input) => {
     return input.charAt(0);
 }
 
-const Header = ({ title }) => {
+const Header = ({ title, back }) => {
     const { identity } = useAuth();
     const { rank, points, totalPlayers } = useData();
 
@@ -99,9 +99,14 @@ const Header = ({ title }) => {
             ) : (
                 <>
                     <View style={styles.container}>
-                        <TouchableOpacity onPress={() => navigation.goBack()}>
-                            <Ionicons name="arrow-back-sharp" size={24} color="#FFFFFF" />
-                        </TouchableOpacity>
+                        {back ? (
+                            <TouchableOpacity onPress={() => navigation.goBack()}>
+                                <Ionicons name="arrow-back-sharp" size={24} color="#FFFFFF" />
+                            </TouchableOpacity>
+                        ) : (
+                            <View style={styles.hidden} />
+                        )}
+
                         <Text style={styles.pageTitle}>{title}</Text>
                         {title == 'Profile' ? (
                             <TouchableOpacity onPress={() => navigation.goBack()}>
